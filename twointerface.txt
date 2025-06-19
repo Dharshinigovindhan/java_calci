@@ -1,0 +1,24 @@
+interface Animal {
+    public void sound();
+}
+interface Flower{
+    public void fragnance();
+}
+class Cat implements Animal {
+    public void sound() {
+        System.out.println("Meow");
+    }
+}
+class Jasmine implements Flower{
+    public void fragnance() {
+        System.out.println("Good");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+        Jasmine j = new Jasmine();
+        c.sound();
+        j.fragnance();
+    }
+}
