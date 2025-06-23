@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> sol = new ArrayList<>();
+        List<Integer> carrierds = new ArrayList<>();
+        findAllCombinations(0, candidates, target, sol, carrierds);
+        return sol;
+    }
+
+    private void findAllCombinations(int idx, int[] candidates, int target,
+                                     List<List<Integer>> sol, List<Integer> carrierds) {
+        if (idx == candidates.length) {
+            if (target == 0) {
+                sol.add(new ArrayList<>(carrierds));
+            }
+            return;
+        }
+
+        if (candidates[idx] <= target) {
+            carrierds.add(candidates[idx]);
+            findAllCombinations(idx, candidates, target - candidates[idx], sol, carrierds);
+            carrierds.remove(carrierds.size() - 1);
+        }
+
+        findAllCombinations(idx + 1, candidates, target, sol, carrierds);
+    }
+}
